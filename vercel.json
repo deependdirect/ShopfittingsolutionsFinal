@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "Shopfitting Solutions Int.",
+  "name": "shopfit-pro",
   "headers": [
     {
       "source": "/(.*)",
