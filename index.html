@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopfitting Solutions International | Premium Shop Fitting Solutions Australia</title>
+    <title>ShopFit Pro | Premium Shop Fitting Solutions Australia</title>
     <meta name="description" content="Transform your retail space with Australia's leading shop fitting experts. Specialising in jewellery stores, supermarkets, kiosks, cafes & all retail fit-outs. Get your free quote today!">
     <meta name="keywords" content="shop fitting, retail fit out, store design, jewellery shop fitters, supermarket fit out, kiosk design, cafe fit out, Australia, retail design, commercial fit out">
     
@@ -60,24 +60,89 @@
             background-clip: text;
         }
         
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
+        /* ===== HEADLINE ANIMATIONS ===== */
+        
+        /* Fade + Slide Up Animation */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .animate-slide-up {
-            animation: slideUp 0.6s ease-out forwards;
+        .animate-headline {
+            animation: fadeSlideUp 1s ease-out forwards;
+            opacity: 0;
         }
         
+        /* Shimmer Animation for "Customer Magnet" */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        .shimmer-text {
+            background: linear-gradient(
+                90deg,
+                #0ea5e9 0%,
+                #38bdf8 25%,
+                #67e8f9 50%,
+                #38bdf8 75%,
+                #0ea5e9 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        /* Staggered animations for elements below headline */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
         
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* Animation delays */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        
+        /* Scroll reveal animation */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -107,6 +172,7 @@
             background: #0284c7;
         }
     </style>
+<base target="_blank">
 </head>
 <body class="font-sans antialiased text-gray-900">
     <!-- Navigation -->
@@ -119,7 +185,7 @@
                         <span class="text-white font-bold text-xl">S</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-bold text-xl leading-tight text-white nav-text">Shopfitting Solutions</span>
+                        <span class="font-bold text-xl leading-tight text-white nav-text">ShopFit</span>
                         <span class="text-xs font-medium text-primary-300">PRO</span>
                     </div>
                 </a>
@@ -183,19 +249,23 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Column -->
                 <div class="text-white">
-                    <span class="inline-block px-4 py-2 bg-primary-500/20 border border-primary-400/30 rounded-full text-primary-300 text-sm font-medium mb-6 animate-fade-in">
+                    <!-- Badge with animation -->
+                    <span class="animate-slide-up delay-100 inline-block px-4 py-2 bg-primary-500/20 border border-primary-400/30 rounded-full text-primary-300 text-sm font-medium mb-6">
                         Australia's Leading Shop Fitting Experts
                     </span>
                     
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-slide-up" style="animation-delay: 0.1s;">
-                        Transform Your Retail Space Into a <span class="text-gradient">Customer Magnet</span>
+                    <!-- ANIMATED HEADLINE -->
+                    <h1 class="animate-headline text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Transform Your Retail Space Into a <span class="shimmer-text">Customer Magnet</span>
                     </h1>
                     
-                    <p class="text-lg sm:text-xl text-white/80 mb-8 max-w-xl animate-slide-up" style="animation-delay: 0.2s;">
+                    <!-- Subtitle with animation -->
+                    <p class="animate-slide-up delay-300 text-lg sm:text-xl text-white/80 mb-8 max-w-xl">
                         From jewellery boutiques to supermarkets, kiosks to cafes — we design and build retail environments that drive sales and create unforgettable customer experiences across Australia.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up" style="animation-delay: 0.3s;">
+                    <!-- Buttons with animation -->
+                    <div class="animate-slide-up delay-400 flex flex-col sm:flex-row gap-4 mb-12">
                         <a href="#contact" class="group px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-full transition-all flex items-center justify-center gap-2">
                             Get Your Free Quote
                             <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
@@ -205,8 +275,8 @@
                         </a>
                     </div>
                     
-                    <!-- Trust Badges -->
-                    <div class="flex flex-wrap gap-6 animate-slide-up" style="animation-delay: 0.4s;">
+                    <!-- Trust Badges with animation -->
+                    <div class="animate-slide-up delay-500 flex flex-wrap gap-6">
                         <div class="flex items-center gap-2 text-white/70">
                             <i data-lucide="award" class="w-5 h-5 text-primary-400"></i>
                             <span class="text-sm">Award Winning Design</span>
@@ -222,8 +292,8 @@
                     </div>
                 </div>
                 
-                <!-- Right Column - Stats -->
-                <div class="hidden lg:block animate-slide-up" style="animation-delay: 0.5s;">
+                <!-- Right Column - Stats with animation -->
+                <div class="hidden lg:block animate-slide-up delay-600">
                     <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
                         <div class="grid grid-cols-3 gap-6">
                             <div class="text-center">
@@ -252,7 +322,7 @@
             </div>
         </div>
         
-        <!-- Scroll Indicator -->
+        <!-- Scroll Indicator with animation -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
             <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
                 <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
@@ -1102,9 +1172,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:info@shopfittingsolutions.com.au" class="text-white/70 hover:text-primary-400 transition-colors flex items-start gap-3">
+                            <a href="mailto:info@shopfitpro.com.au" class="text-white/70 hover:text-primary-400 transition-colors flex items-start gap-3">
                                 <i data-lucide="mail" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
-                                <span>info@shopfittingsolutions.com.au</span>
+                                <span>info@shopfitpro.com.au</span>
                             </a>
                         </li>
                         <li class="flex items-start gap-3 text-white/70">
