@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -171,7 +172,136 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #0284c7;
         }
+        
+        /* ===== HERO SLIDESHOW ===== */
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+        
+        .hero-slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            color: #0ea5e9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-slide-nav:hover {
+            background: #0ea5e9;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .hero-slide-prev {
+            left: 16px;
+        }
+        
+        .hero-slide-next {
+            right: 16px;
+        }
+        
+        .hero-slide-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .hero-slide-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-slide-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .hero-slide-dot.active {
+            background: #0ea5e9;
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-slideshow {
+                min-height: 350px;
+                margin-top: 2rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-slideshow {
+                min-height: 280px;
+            }
+            
+            .hero-slide-nav {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .hero-slide-prev {
+                left: 10px;
+            }
+            
+            .hero-slide-next {
+                right: 10px;
+            }
+        }
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body class="font-sans antialiased text-gray-900">
@@ -301,30 +431,74 @@
                     </div>
                 </div>
                 
-                <!-- Right Column - Stats with animation -->
+                <!-- Right Column - Image Slideshow -->
                 <div class="hidden lg:block animate-slide-up delay-600">
-                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                        <div class="grid grid-cols-3 gap-6">
-                            <div class="text-center">
-                                <div class="text-4xl font-bold text-white mb-2">25+</div>
-                                <div class="text-sm text-white/70">Years Experience</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-4xl font-bold text-white mb-2">500+</div>
-                                <div class="text-sm text-white/70">Projects Completed</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-4xl font-bold text-white mb-2">98%</div>
-                                <div class="text-sm text-white/70">Client Satisfaction</div>
+                    <div class="hero-slideshow" id="hero-slideshow">
+                        <!-- Slide 1 -->
+                        <div class="hero-slide active">
+                            <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Fashion Boutique">
+                            <div class="hero-slide-caption">
+                                <p class="text-white font-semibold">Modern Fashion Boutique</p>
+                                <p class="text-white/70 text-sm">Sydney, NSW</p>
                             </div>
                         </div>
-                        <div class="mt-8 pt-8 border-t border-white/20">
-                            <p class="text-white/80 text-center text-sm">Trusted by leading Australian brands</p>
-                            <div class="flex justify-center gap-8 mt-4 opacity-60">
-                                <span class="text-white font-semibold">Nathan Jewellers</span>
-                                <span class="text-white font-semibold">Diamonds International</span>
-                                <span class="text-white font-semibold">Famous Footwear</span>
+                        <!-- Slide 2 -->
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Shopping Centre">
+                            <div class="hero-slide-caption">
+                                <p class="text-white font-semibold">Luxury Shopping Centre</p>
+                                <p class="text-white/70 text-sm">Melbourne, VIC</p>
                             </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="High-End Jewellery Store">
+                            <div class="hero-slide-caption">
+                                <p class="text-white font-semibold">High-End Jewellery Store</p>
+                                <p class="text-white/70 text-sm">Brisbane, QLD</p>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electronics Store">
+                            <div class="hero-slide-caption">
+                                <p class="text-white font-semibold">Contemporary Electronics Store</p>
+                                <p class="text-white/70 text-sm">Perth, WA</p>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Supermarket">
+                            <div class="hero-slide-caption">
+                                <p class="text-white font-semibold">Modern Supermarket</p>
+                                <p class="text-white/70 text-sm">Adelaide, SA</p>
+                            </div>
+                        </div>
+                        <!-- Slide 6 -->
+                        <div class="hero-slide">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trendy Cafe">
+                            <div class="hero-slide-caption">
+                                <p class="text-white font-semibold">Trendy Cafe & Restaurant</p>
+                                <p class="text-white/70 text-sm">Gold Coast, QLD</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button class="hero-slide-nav hero-slide-prev" onclick="changeHeroSlide(-1)">
+                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        </button>
+                        <button class="hero-slide-nav hero-slide-next" onclick="changeHeroSlide(1)">
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
+                        
+                        <!-- Dots -->
+                        <div class="hero-slide-dots">
+                            <div class="hero-slide-dot active" onclick="goToHeroSlide(0)"></div>
+                            <div class="hero-slide-dot" onclick="goToHeroSlide(1)"></div>
+                            <div class="hero-slide-dot" onclick="goToHeroSlide(2)"></div>
+                            <div class="hero-slide-dot" onclick="goToHeroSlide(3)"></div>
+                            <div class="hero-slide-dot" onclick="goToHeroSlide(4)"></div>
+                            <div class="hero-slide-dot" onclick="goToHeroSlide(5)"></div>
                         </div>
                     </div>
                 </div>
@@ -1379,6 +1553,113 @@
             submitBtn.innerHTML = '<span>Request Free Quote</span><i data-lucide="send" class="w-5 h-5"></i>';
             lucide.createIcons();
         }
+        
+        // ===== HERO SLIDESHOW =====
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots = document.querySelectorAll('.hero-slide-dot');
+        const totalHeroSlides = heroSlides.length;
+        let heroSlideInterval;
+        let isHeroPaused = false;
+        
+        // Initialize hero slideshow
+        function initHeroSlideshow() {
+            if (heroSlides.length > 0) {
+                showHeroSlide(0);
+                startHeroAutoAdvance();
+            }
+        }
+        
+        // Show specific hero slide
+        function showHeroSlide(index) {
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroDots.forEach(dot => dot.classList.remove('active'));
+            
+            heroSlides[index].classList.add('active');
+            heroDots[index].classList.add('active');
+            
+            currentHeroSlide = index;
+        }
+        
+        // Change hero slide (next/prev)
+        function changeHeroSlide(direction) {
+            let newIndex = currentHeroSlide + direction;
+            
+            if (newIndex >= totalHeroSlides) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = totalHeroSlides - 1;
+            }
+            
+            showHeroSlide(newIndex);
+            resetHeroAutoAdvance();
+        }
+        
+        // Go to specific hero slide (for dots)
+        function goToHeroSlide(index) {
+            showHeroSlide(index);
+            resetHeroAutoAdvance();
+        }
+        
+        // Auto-advance hero slides
+        function startHeroAutoAdvance() {
+            heroSlideInterval = setInterval(() => {
+                if (!isHeroPaused) {
+                    changeHeroSlide(1);
+                }
+            }, 5000);
+        }
+        
+        function stopHeroAutoAdvance() {
+            clearInterval(heroSlideInterval);
+        }
+        
+        function resetHeroAutoAdvance() {
+            stopHeroAutoAdvance();
+            startHeroAutoAdvance();
+        }
+        
+        // Pause on hover
+        const heroSlideshowContainer = document.getElementById('hero-slideshow');
+        
+        if (heroSlideshowContainer) {
+            heroSlideshowContainer.addEventListener('mouseenter', () => {
+                isHeroPaused = true;
+            });
+            
+            heroSlideshowContainer.addEventListener('mouseleave', () => {
+                isHeroPaused = false;
+            });
+            
+            // Touch/swipe support for mobile
+            let heroTouchStartX = 0;
+            let heroTouchEndX = 0;
+            
+            heroSlideshowContainer.addEventListener('touchstart', (e) => {
+                heroTouchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            heroSlideshowContainer.addEventListener('touchend', (e) => {
+                heroTouchEndX = e.changedTouches[0].screenX;
+                handleHeroSwipe();
+            }, { passive: true });
+            
+            function handleHeroSwipe() {
+                const swipeThreshold = 50;
+                const diff = heroTouchStartX - heroTouchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        changeHeroSlide(1);
+                    } else {
+                        changeHeroSlide(-1);
+                    }
+                }
+            }
+        }
+        
+        // Initialize hero slideshow when page loads
+        window.addEventListener('load', initHeroSlideshow);
     </script>
 </body>
 </html>
